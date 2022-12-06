@@ -20,7 +20,9 @@ Route::middleware([
         Route::get('/category/create', 'create')->name('create');
         Route::post('/category/store', 'categoryStore')->name('category.store');
         Route::get('/category/manage', 'manageCategory')->name('manage.category');
-        Route::get('/category/editManageCategory/{id}', 'editManageCategory')->name('editManageCategory');
+        Route::get('/category/edit/{id}', 'editCategory')->name('edit-category');
+        Route::post('/category/update/{id}', 'updateCategory')->name('update-category');
+        Route::get('/category/delete/{id}', 'deleteCategory')->name('delete-category');
     });
 
 });
