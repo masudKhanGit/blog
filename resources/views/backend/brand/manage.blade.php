@@ -1,5 +1,5 @@
 @extends('backend.backend-master')
-@section('title', 'Category | Manage Page')
+@section('title', 'Brand Category | Manage Page')
 @section('content')
     <div class="container">
         <div class="row mt-5">
@@ -7,34 +7,34 @@
                 <div class="card">
                     <div class="card-header">
                         <span class="text-success">{{ Session::get('message') }}</span>
-                        <h1 class="text-center">Manage Category</h1>
+                        <h1 class="text-center">Manage Brand</h1>
                     </div>
                     <div class="card-body">
                         <table id="datatablesSimple" class="table table-striped">
                             <tr>
                                 <th>Serial Number</th>
-                                <th>Category Name</th>
+                                <th>Brand Name</th>
                                 <th>Brand</th>
                                 <th>Product</th>
                                 <th>Slug</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>
-                            @foreach ($categoryes as $category)
+                            @foreach ($brands as $brand)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $category->category_name }}</td>
-                                    <td>{{ $category->brand_count }}</td>
-                                    <td>{{ $category->product_count }}</td>
-                                    <td>{{ $category->slug }}</td>
-                                    <td class="{{ $category->status === 1 ? 'text-success' : 'text-danger' }}">
-                                        {{ $category->status === 1 ? 'Active' : 'Inactive' }}</td>
+                                    <td>{{ $brand->brand_name }}</td>
+                                    <td>{{ $brand->brand_count }}</td>
+                                    <td>{{ $brand->product_count }}</td>
+                                    <td>{{ $brand->slug }}</td>
+                                    <td class="{{ $brand->status === 1 ? 'text-success' : 'text-danger' }}">
+                                        {{ $brand->status === 1 ? 'Active' : 'Inactive' }}</td>
                                     <td>
-                                        <a href="{{ route('edit-category', ['id' => $category->id]) }}"
-                                            class="btn btn-primary">Edit</a>
-                                        <a href="{{ route('delete-category', ['id' => $category->id]) }}"
-                                            class="btn btn-danger"
-                                            onclick="return confirm('Are your sure delete this category')">Delete</a>
+                                        {{-- {{ route('edit-brand', ['id' => $brand->id]) }} --}}
+                                        <a href="" class="btn btn-primary">Edit</a>
+                                        {{-- {{ route('delete-brand', ['id' => $brand->id]) }} --}}
+                                        <a href="" class="btn btn-danger"
+                                            onclick="return confirm('Are your sure delete this brand')">Delete</a>
                                     </td>
                                 </tr>
                             @endforeach

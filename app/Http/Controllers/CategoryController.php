@@ -36,6 +36,5 @@ class CategoryController extends Controller {
         $category = Category::find($id);
         $category->delete();
         return redirect()->route('manage.category')->with('message', 'Category Delete Successfully');
-
-    }   
+    }
 }

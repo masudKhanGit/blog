@@ -17,6 +17,7 @@ class Category extends Model
             'name' => 'max:40 | min:3 '
         ]);
         self::$category->category_name = $request->category_name;
+        self::$category->slug = strtolower(str_replace(' ', '-', self::$category->category_name));
         self::$category->save();
     }
 

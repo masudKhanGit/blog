@@ -1,10 +1,13 @@
 <?php
 
+use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/all-product', [ProductController::class, 'allProduct'])->name('all.product');
 
 Route::middleware([
     'auth:sanctum',
@@ -25,4 +28,14 @@ Route::middleware([
         Route::get('/category/delete/{id}', 'deleteCategory')->name('delete-category');
     });
 
+    Route::controller(BrandController::class)->group(function() {
+        Route::get('/brand/add-brand', 'addBrand')->name('index');
+        Route::post('/admin/store-brand', 'storeBrand')->name('store-brand');
+        Route::get('/brand/manage-brand', 'manageBrand')->name('manage-brand');
+    });
+
+    Route::controller(ProductController::class)->group(function () {
+        Route::get('product/create', 'create')->name('product.create');
+        Route::post('product/store', 'store')->name('product.store');
+    });
 });

@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+
 class HomeController extends Controller
 {
     public function index () {
-        return view('frontend.home.index');
+        $categories = Category::latest()->get();
+        return view('frontend.home.index', compact('categories'));
     }
 }
