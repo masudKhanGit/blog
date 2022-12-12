@@ -82,7 +82,7 @@
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="{{ route('all.product') }}">All Product</a></li>
                         @foreach ($categories as $category)
-                            <li><a href="index.html">{{ $category->category_name }}</a></li>
+                            <li><a href="{{ route('category.product', ['cat_id' => $category->id]) }}">{{ $category->category_name }}</a></li>
                         @endforeach
                     </ul>
                 </div>

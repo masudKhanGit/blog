@@ -11,7 +11,8 @@ class ProductController extends Controller {
     public function allProduct() {
         $categories = Category::all();
         $products = Product::all();
-        return view('frontend.products.all-product', compact('categories', 'products'));
+        $page = 'All Product';
+        return view('frontend.products.all-product', compact('categories', 'products', 'page'));
     }
     public function create() {
         $categories = Category::all();
@@ -43,5 +44,12 @@ class ProductController extends Controller {
         }
         $product->save();
         return redirect()->back()->with('message', 'product added successfully');
+    }
+
+    public function categoryProduct($cat_id) {
+        $categories = Category::all();
+        $products = Product::where('category_id', "=", $cat_id)->get();
+        $page = Category::find($cat_id)->category_name . ' '. 'Products';
+        return view('frontend.products.all-product', compact('categories', 'products', 'page'));
     }
 }
